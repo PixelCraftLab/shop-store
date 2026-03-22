@@ -5,7 +5,7 @@ function Landing() {
     <div className="h-screen flex flex-col justify-center items-center bg-gray-100">
       <h1 className="text-4xl font-bold mb-4">Welcome to Shop App 🛒</h1>
       <p className="mb-6 text-gray-600">
-        Buy products with just 25% initial payment!
+        Order products with just 25% initial payment!
       </p>
 
       <div className="space-x-4">
