@@ -1,7 +1,10 @@
-import { useState } from "react";
+
+import { useContext, useState } from "react";
+import { ShopContext } from "../context/ShopContext";
+
 
 function Dashboard() {
-  const [products, setProducts] = useState([]);
+  const { products, setProducts } = useContext(ShopContext);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
@@ -16,8 +19,8 @@ function Dashboard() {
 
     setProducts([...products, newProduct]);
 
-    setName("");
-    setPrice("");
+    setName("None");
+    setPrice("0");
   };
 const deleteProduct = (id) => {
 
