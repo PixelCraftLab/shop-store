@@ -6,18 +6,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-//   const handleLogin = async () => {
-//     try {
-//       const res = await axios.post("http://localhost:3000/login", {
-//         email,
-//         password,
-//       });
 
-//       alert(res.data);
-//     } catch (err) {
-//       alert(err.response?.data || "Error");
-//     }
-//   };
 const handleLogin = () => {
   
   window.location.href = "/dashboard";
