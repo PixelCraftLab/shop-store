@@ -25,7 +25,7 @@ function Register() {
       <div className="absolute inset-0 z-0">
         <Antigravity autoAnimate />
       </div>
-      <div className="relative z-20 p-6 border rounded w-80 ">
+      <div className="relative z-20 p-6   w-80 ">
         <h2 className="m-5 text-2xl mb-4 text-cyan-200 ">Register</h2>
 
         <input
