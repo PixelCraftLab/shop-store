@@ -5,45 +5,45 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-//   const handleRegister = async () => {
-//     try {
-//       const res = await axios.post("http://localhost:3000/register", {
-//         email,
-//         password,
-//       });
 
-//       alert(res.data);
-//     } catch (err) {
-//       alert(err.response?.data || "Error");
-//     }
-//   };
-const handleRegister = () => {
-  
-  window.location.href = "/dashboard";
-};
+  const handleRegister = () => {
+
+    window.location.href = "/dashboard";
+  };
+  const handlelogin = () => {
+
+    window.location.href = "/Login";
+  };
 
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className="p-6 border rounded w-80">
-        <h2 className="text-2xl mb-4">Register</h2>
+    <div
+      style={{
+        backgroundColor: "black"
+      }}
+      className=" h-screen flex justify-center items-center">
+      <div className="p-6 border rounded w-80 ">
+        <h2 className="m-5 text-2xl mb-4 text-cyan-200 ">Register</h2>
 
         <input
+          
           type="email"
           placeholder="Email"
-          className="w-full mb-3 p-2 border"
+          className="text-cyan-200 placeholder:text-cyan-200 w-full mb-3 p-2 border m-5"
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
           placeholder="Password"
-          className="w-full mb-3 p-2 border"
+          className="text-cyan-200 placeholder:text-cyan-200 w-full mb-3 p-2 border m-5"
           onChange={(e) => setPassword(e.target.value)}
         />
 
+        <a className="text-blue-50 m-5">Already have a account <span className="text-blue-500 cursor-pointer" onClick={handlelogin}>Login</span> </a>
+
         <button
           onClick={handleRegister}
-          className="w-full bg-green-500 text-white p-2 rounded"
+          className="cursor-pointer w-full bg-white text-black p-2 rounded m-5"
         >
           Register
         </button>

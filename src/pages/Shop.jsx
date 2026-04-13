@@ -8,7 +8,7 @@ function Shop() {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4">Shop </h1>
 
-      
+
 
       {products.map((p) => (
         <div key={p.id} className="border p-3 mb-2">
@@ -21,3 +21,4 @@ function Shop() {
 }
 
 export default Shop;
+
