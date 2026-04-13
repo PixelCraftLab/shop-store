@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Antigravity from "@/components/Antigravity";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -20,15 +21,18 @@ function Register() {
       style={{
         backgroundColor: "black"
       }}
-      className=" h-screen flex justify-center items-center">
-      <div className="p-6 border rounded w-80 ">
+      className="relative h-screen w-full overflow-hidden h-screen flex justify-center items-center">
+      <div className="absolute inset-0 z-0">
+        <Antigravity autoAnimate />
+      </div>
+      <div className="relative z-20 p-6 border rounded w-80 ">
         <h2 className="m-5 text-2xl mb-4 text-cyan-200 ">Register</h2>
 
         <input
-          
+
           type="email"
           placeholder="Email"
-          className="text-cyan-200 placeholder:text-cyan-200 w-full mb-3 p-2 border m-5"
+          className="z-99 text-cyan-200 placeholder:text-cyan-200 w-full mb-3 p-2 border m-5"
           onChange={(e) => setEmail(e.target.value)}
         />
 
