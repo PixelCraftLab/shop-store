@@ -1,56 +1,97 @@
-import { useState } from "react";
-import axios from "axios";
-import Antigravity from "@/components/Antigravity";
+import { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { loginUser } = useContext(ShopContext);
 
-
-  const handleRegister = () => {
-
-    window.location.href = "/dashboard";
-  };
-  const handlelogin = () => {
-
-    window.location.href = "/Login";
+  const handleRegister = (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    
+    // Simulating a backend call since axios is removed
+    setTimeout(() => {
+      if (email && password.length >= 6) {
+        loginUser({ email });
+        navigate("/dashboard");
+      } else {
+        setError("Password must be 6+ chars with letters & numbers");
+      }
+      setLoading(false);
+    }, 1000);
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "black"
-      }}
-      className="relative h-screen w-full overflow-hidden h-screen flex justify-center items-center">
-      <div className="absolute inset-0 z-0">
-        <Antigravity autoAnimate />
-      </div>
-      <div className="relative z-20 p-6   w-80 ">
-        <h2 className="m-5 text-2xl mb-4 text-cyan-200 ">Register</h2>
+    <div className="min-h-screen flex justify-center items-center bg-gray-50 font-sans p-4 pt-16">
+      <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+        <div className="text-center mb-8">
+          <div className="inline-flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4 text-2xl font-bold">
+            👤
+          </div>
+          <h2 className="text-3xl font-extrabold text-gray-900">Create Account</h2>
+          <p className="text-gray-500 mt-2">Join us and start shopping today.</p>
+        </div>
 
-        <input
+        {error && (
+          <div className="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg flex items-start">
+            <span className="text-red-500 mr-3 flex-shrink-0 font-bold">!</span>
+            <p className="text-sm text-red-700">{error}</p>
+          </div>
+        )}
 
-          type="email"
-          placeholder="Email"
-          className="z-99 text-cyan-200 placeholder:text-cyan-200 w-full mb-3 p-2 border m-5"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form onSubmit={handleRegister} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">
+              Email Address
+            </label>
+            <input
+              id="email"
+              type="email"
+              required
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="text-cyan-200 placeholder:text-cyan-200 w-full mb-3 p-2 border m-5"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="password">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              required
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <p className="text-xs text-gray-500 mt-2">Must be 6+ chars with letters & numbers.</p>
+          </div>
 
-        <a className="text-blue-50 m-5">Already have a account <span className="text-blue-500 cursor-pointer" onClick={handlelogin}>Login</span> </a>
+          <button
+            type="submit"
+            disabled={loading}
+            className={`cursor-pointer w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
+          >
+            {loading ? "Creating..." : "Sign Up"}
+          </button>
+        </form>
 
-        <button
-          onClick={handleRegister}
-          className="cursor-pointer w-full bg-white text-black p-2 rounded m-5"
-        >
-          Register
-        </button>
+        <div className="mt-8 text-center text-sm text-gray-600">
+          Already have an account?{" "}
+          <Link to="/login" className="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
+            Sign in
+          </Link>
+        </div>
       </div>
     </div>
   );
