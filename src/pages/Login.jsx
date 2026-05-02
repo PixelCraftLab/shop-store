@@ -36,9 +36,7 @@ function Login() {
     <div className="min-h-screen flex justify-center items-center bg-gray-50 font-sans p-4 pt-16">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
         <div className="text-center mb-8">
-          <div className="inline-flex justify-center items-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4 text-2xl font-bold">
-            👤
-          </div>
+          
           <h2 className="text-3xl font-extrabold text-gray-900">Welcome Back</h2>
           <p className="text-gray-500 mt-2">Please enter your details to sign in.</p>
         </div>
@@ -75,7 +73,7 @@ function Login() {
               type="password"
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white"
-              placeholder="••••••••"
+              placeholder="....."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -91,7 +89,7 @@ function Login() {
         </form>
 
         <div className="mt-8 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
+          Don't have an account?
           <Link to="/register" className="font-semibold text-blue-600 hover:text-blue-800 transition-colors">
             Create account
           </Link>
