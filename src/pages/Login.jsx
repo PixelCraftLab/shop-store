@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,21 +11,25 @@ function Login() {
   const navigate = useNavigate();
   const { loginUser } = useContext(ShopContext);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
     
-    // Simulating a backend call since axios is removed
-    setTimeout(() => {
+    try {
+      await axios.post("https://jsonplaceholder.typicode.com/posts", { email, password });
       if (email && password.length >= 6) {
         loginUser({ email });
         navigate("/dashboard");
       } else {
         setError("Invalid credentials or password too short");
       }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Failed to connect to the server");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (

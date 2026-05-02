@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
+import axios from "axios";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -10,30 +11,32 @@ function Register() {
   const navigate = useNavigate();
   const { loginUser } = useContext(ShopContext);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
     
-    // Simulating a backend call since axios is removed
-    setTimeout(() => {
+    try {
+      await axios.post("https://jsonplaceholder.typicode.com/posts", { email, password });
       if (email && password.length >= 6) {
         loginUser({ email });
         navigate("/dashboard");
       } else {
         setError("Password must be 6+ chars with letters & numbers");
       }
+    } catch (err) {
+      console.error("Register error:", err);
+      setError("Failed to connect to the server");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-50 font-sans p-4 pt-16">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
         <div className="text-center mb-8">
-          <div className="inline-flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4 text-2xl font-bold">
-            👤
-          </div>
+          
           <h2 className="text-3xl font-extrabold text-gray-900">Create Account</h2>
           <p className="text-gray-500 mt-2">Join us and start shopping today.</p>
         </div>
@@ -87,7 +90,7 @@ function Register() {
         </form>
 
         <div className="mt-8 text-center text-sm text-gray-600">
-          Already have an account?{" "}
+          Already have an account?
           <Link to="/login" className="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
             Sign in
           </Link>
