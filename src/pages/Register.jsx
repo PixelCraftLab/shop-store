@@ -73,11 +73,11 @@ function Register() {
               type="password"
               required
               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white"
-              placeholder="••••••••"
+              placeholder="Must be 6+ chars with letters & numbers."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="text-xs text-gray-500 mt-2">Must be 6+ chars with letters & numbers.</p>
+
           </div>
 
           <button
