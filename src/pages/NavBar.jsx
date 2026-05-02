@@ -17,13 +17,13 @@ const NavBar = () => {
     <div
       className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/80 border-b border-gray-200 shadow-sm flex justify-between items-center px-6 md:px-14 py-4 transition-all duration-300"
     >
-      <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
+      <Link to="/" className="text-2xl  text-gray-900 flex items-center gap-2">
 
         Smart<span className="text-blue-600">Store</span>
       </Link>
 
       <div className="flex gap-4 md:gap-6 items-center">
-        <Link to="/shop" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+        <Link to="/shop" className="text-gray-600 hover:text-blue-600  transition-colors">
           Shop
         </Link>
         
