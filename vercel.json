@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "backend/**": {
+      "runtime": "vercel-node@0.0.0"
+    }
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/" }
+  ]
+}
