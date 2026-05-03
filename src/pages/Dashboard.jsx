@@ -50,7 +50,7 @@ function Dashboard() {
           <h1 className="text-3xl  text-gray-900 ">
             Seller <span className="text-blue-600">Dashboard</span>
           </h1>
-          <p className="text-gray-500 mt-2">Manage your products and inventory.</p>
+          <p className="text-gray-500 mt-2">Manage your products </p>
         </div>
 
         <div className="grid grid-cols-1  gap-8">
@@ -58,7 +58,7 @@ function Dashboard() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
               <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <span className="text-blue-600 font-bold">+</span> Add New Product
+                Add New Product
               </h2>
 
               <form onSubmit={addProduct} className="space-y-4">
@@ -79,7 +79,7 @@ function Dashboard() {
                   <input
                     type="number"
                     required
-                    placeholder="e.g. 299"
+                    placeholder="399"
                     className="w-full px-4 py-2.5 rounded-xl border border-gray-300  focus:ring-blue-600 focus:border-transparent transition-all bg-gray-50 focus:bg-white"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
@@ -139,7 +139,7 @@ function Dashboard() {
 
                       <button
                         onClick={() => deleteProduct(p.id)}
-                        className="cursor-pointer px-4 py-2 text-sm text-red-500 hover:text-white hover:bg-red-500 font-semibold rounded-lg transition-colors border border-red-200"
+                        className="cursor-pointer px-4 py-2 text-red-500 hover:text-white hover:bg-red-500 rounded-lg transition-colors border border-red-200"
                         aria-label="Delete product"
                       >
                         Delete
