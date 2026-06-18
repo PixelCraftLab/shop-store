@@ -30,9 +30,9 @@ function Shop() {
                   alt={p.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-bold text-gray-900 shadow-sm flex items-center gap-1">
-                  ⭐ 4.9
-                </div>
+                {/* <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-bold text-gray-900 shadow-sm flex items-center gap-1">
+                  
+                </div> */}
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
