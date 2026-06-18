@@ -5,15 +5,12 @@ import { ShopContext } from "../context/ShopContext";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   const { loginUser } = useContext(ShopContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setError("");
-    setLoading(true);
 
     try {
       const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -21,43 +18,37 @@ function Login() {
       const user = users.find((u) => u.email === email);
 
       if (!user) {
-        setError("User not found");
-        setLoading(false);
+        alert("User not found");
         return;
       }
 
       if (user.password !== password) {
-        setError("Incorrect password");
-        setLoading(false);
+        alert("Incorrect password");
         return;
       }
 
       localStorage.setItem("currentUser", JSON.stringify(user));
       loginUser(user);
-      navigate("/dashboard");
 
+      alert("Login successful!");
+
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
-      setError("Something went wrong");
-    } finally {
-      setLoading(false);
+      alert("Something went wrong");
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-50 font-sans p-4 pt-16">
-      <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-gray-900">Welcome Back</h2>
-          <p className="text-gray-500 mt-2">Please enter your details to sign in.</p>
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center mb-2">
+          Welcome Back
+        </h2>
 
-        {error && (
-          <div className="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg flex items-start">
-            <span className="text-red-500 mr-3 font-bold">!</span>
-            <p className="text-sm text-red-700">{error}</p>
-          </div>
-        )}
+        <p className="text-center text-gray-600 mb-6">
+          Please enter your details to sign in.
+        </p>
 
         <form onSubmit={handleLogin} className="space-y-6">
           <input
@@ -80,10 +71,9 @@ function Login() {
 
           <button
             type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold"
+            className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition"
           >
-            {loading ? "Signing in..." : "Sign In"}
+            Sign In
           </button>
         </form>
 
